@@ -14,9 +14,13 @@ dotenv.config();
 app.use(
   cors({
     origin: process.env.CLIENT_URL || "http://localhost:5173",
-    credentials: true, // Allow cookies
+    credentials: true, // Allow cookieParser
   })
 );
+
+app.use((req, res, next) => {
+  res.json({body: req.body});
+})
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
