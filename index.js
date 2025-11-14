@@ -18,13 +18,13 @@ app.use(
   })
 );
 
-app.use((req, res, next) => {
-  res.json({body: req.body});
-})
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use((req, res, next) => {
+  res.json({body: req.body});
+})
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/gemini", geminiRouter);
 
